@@ -113,3 +113,15 @@ button {
     text-align: center;
     cursor: pointer;
 }
+
+#timer {
+    display: none;
+    position: fixed;
+    top: 200px;
+    right: 100px;
+    padding: 25px;
+    border-radius: 10px;
+    font-size: large;
+    background-color: #000;
+    color: #fff;
+}

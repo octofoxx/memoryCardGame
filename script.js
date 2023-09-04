@@ -1,12 +1,17 @@
 const cards = document.querySelectorAll('.card');
 const modal = document.getElementById('modalOuter');
 const startGame = document.getElementById('startGame');
+const timer = document.getElementById('timer');
 
 let flippedCard = false;
 
 let pauseCards =false;
 
-let firstCard, secondCard;
+let gameStarted = false;
+
+let countdown =60;
+
+let firstCard, secondCard, interval;
 
 //function to flip the cards, used with the eventListener to see which is clicked. After two cards are clicked, will run the checkMatch to determine if they are the same or not.
 function flipCard () {
@@ -69,6 +74,28 @@ cards.forEach(card => card.addEventListener('click', flipCard));
 
 startGame.addEventListener('click', function() {
     modal.style.display = 'none';
+    timer.style.display = 'flex';
+
+    gameStarted = true;
+    showCountdownToPage();
     shuffle();
+
+    interval = setInterval(function() {
+        if (!gameStarted) {
+            return;
+        }
+        countdown --;
+    
+        if (countdown <= 0) {
+            clearInterval(interval);
+            timer.textContent = "Time's Up!"
+        }
+    
+        showCountdownToPage();
+    }, 1000);
+    
+    function showCountdownToPage() {
+    timer.textContent = "Time Remaining " + countdown;
+    }
 });
 
