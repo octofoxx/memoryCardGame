@@ -9,6 +9,8 @@ let pauseCards =false;
 
 let gameStarted = false;
 
+let cardCounter = 0;
+
 let countdown =60;
 
 let firstCard, secondCard, interval;
@@ -32,10 +34,14 @@ function flipCard () {
 
 //checks the cards against the dataset names and if they match, will set them as disabled from flipping. Otherwise, they will be flipped back down.
 function checkMatch () {
-    if (firstCard.dataset.name === secondCard.dataset.name) {
+    let isMatch =firstCard.dataset.name === secondCard.dataset.name;
+    if(isMatch) {
+        cardCounter+=1;
         disableCards();
-        return;
-    }
+        if (cardCounter ==(cards.length/2)) {
+            clearInterval(interval);
+        }
+    } else
 
     unflipCards();
 }
