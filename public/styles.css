@@ -4,9 +4,13 @@
     box-sizing: border-box;
 }
 
+header{
+    text-align: center;
+    font-style: oblique;
+}
+
 body {
     height: 100vh;
-    display: flex;
     background: #48209A;
 }
 
@@ -28,6 +32,10 @@ body {
     transform: scale(1);
     transform-style: preserve-3d;
     transition: transform .5s;
+}
+
+.card:hover {
+    cursor: pointer;
 }
 
 .card:active {
@@ -56,4 +64,15 @@ body {
 /* puts the "face" of the card backwards, essentially making it work like if it was a true card */
 .front {
     transform: rotateY(180deg);
+}
+
+footer {
+    padding-top: 25px;
+    text-align: center;
+    font-weight: bold;
+}
+
+a {
+    color: rgb(151, 2, 2);
+    text-decoration: underline;
 }
