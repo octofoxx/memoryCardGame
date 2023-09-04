@@ -76,3 +76,40 @@ a {
     color: rgb(151, 2, 2);
     text-decoration: underline;
 }
+
+#modalOuter {
+    display: flex;
+    background-color: rgba(128, 128, 128, 0.5);
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+#modalInner {
+    background-color: #000;
+    color: #fff;
+    height: 45vh;
+    width: 45vw;
+    padding: 10px;
+    border-radius: 12px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+button {
+    border: none;
+    background-color: #48209A;
+    border-radius: 30px;
+    color:#fff;
+    font-size: 20px;
+    margin: 20px;
+    padding: 25px;
+    text-align: center;
+    cursor: pointer;
+}

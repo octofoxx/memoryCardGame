@@ -1,4 +1,6 @@
 const cards = document.querySelectorAll('.card');
+const modal = document.getElementById('modalOuter');
+const startGame = document.getElementById('startGame');
 
 let flippedCard = false;
 
@@ -65,4 +67,8 @@ function shuffle () {
 
 cards.forEach(card => card.addEventListener('click', flipCard));
 
-shuffle();
+startGame.addEventListener('click', function() {
+    modal.style.display = 'none';
+    shuffle();
+});
+
