@@ -35,6 +35,7 @@ function flipCard () {
 //checks the cards against the dataset names and if they match, will set them as disabled from flipping. Otherwise, they will be flipped back down.
 function checkMatch () {
     let isMatch =firstCard.dataset.name === secondCard.dataset.name;
+    //this will increment the cardCounter by 1, and when it reaches half the cards length (half the length since each card is used twice) will stop the timer
     if(isMatch) {
         cardCounter+=1;
         disableCards();
