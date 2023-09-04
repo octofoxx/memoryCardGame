@@ -35,10 +35,12 @@ body {
     transition: transform .2s;
 }
 
+/* flips along the Y axis, or left - right screen */
 .card.flip {
     transform: rotateY(180deg);
 }
 
+/* both images are overlayed on each other, with these next two selectors it sets their size, positions and makes them act like a card */
 .front,
 .back {
     width: 100%;
@@ -47,9 +49,11 @@ body {
     position: absolute;
     border-radius: 5px;
     background: grey;
+    /* each image as a backface, so this removes that from when it is flipped */
     backface-visibility: hidden;
 }
 
+/* puts the "face" of the card backwards, essentially making it work like if it was a true card */
 .front {
     transform: rotateY(180deg);
 }
