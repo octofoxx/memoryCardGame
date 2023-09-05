@@ -4,6 +4,8 @@ const startGame = document.getElementById('startGame');
 const timer = document.getElementById('timer');
 const firstModal = document.getElementById('modalInner');
 const scorePage = document.getElementById('scorePage');
+const scores = document.getElementById('scores');
+const scoreList = document.getElementById('scoreList');
 const playerName = document.getElementById('name');
 const submit = document.getElementById('submit');
 
@@ -87,15 +89,21 @@ function shuffle () {
 function saveScore() {
     var scoreInfo = {
     name: playerName.value.trim(),
-    points: countdown,}
-    localStorage.setItem("scoreInfo",JSON.stringify(scoreInfo))
+    points: (countdown *10.5),}
+    localStorage.setItem("scoreInfo",JSON.stringify(scoreInfo));
 }
+
+function showScore(){
+    var displayedScore =JSON.parse(localStorage.getItem("scoreInfo"));
+    scoreList.innerHTML ="name " + displayedScore.name + " score: " +displayedScore.points;
+    }
 
 cards.forEach(card => card.addEventListener('click', flipCard));
 
 startGame.addEventListener('click', function() {
     modal.style.display = 'none';
     timer.style.display = 'flex';
+    scores.style.display = 'flex';
 
     gameStarted = true;
     showCountdownToPage();
@@ -109,7 +117,7 @@ startGame.addEventListener('click', function() {
     
         if (countdown <= 0) {
             clearInterval(interval);
-            timer.textContent = "Time's Up!"
+            timer.textContent = "Time's Up!";
         }
     
         showCountdownToPage();
@@ -124,10 +132,14 @@ submit.addEventListener("click",function() {
     cards.forEach(card => card.addEventListener('click', flipCard));
     cards.forEach(card => card.classList.remove('flip'));
     saveScore();
+    showScore();
     shuffle();
     modal.style.display = "flex";
     firstModal.style.display ="block";
     scorePage.style.display = "none";
-    countdown= 60
+    scores.style.display = 'none';
+    timer.style.display = 'none';
+    countdown= 60;
+    cardCounter = 0;
 });
 

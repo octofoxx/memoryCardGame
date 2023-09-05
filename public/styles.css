@@ -138,3 +138,15 @@ button {
     background-color: #000;
     color: #fff;
 }
+
+#scores {
+    display: none;
+    position: fixed;
+    top: 200px;
+    left: 100px;
+    padding: 25px;
+    border-radius: 10px;
+    font-size: large;
+    background-color: #000;
+    color: #fff;
+}
