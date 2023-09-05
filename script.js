@@ -2,6 +2,10 @@ const cards = document.querySelectorAll('.card');
 const modal = document.getElementById('modalOuter');
 const startGame = document.getElementById('startGame');
 const timer = document.getElementById('timer');
+const firstModal = document.getElementById('modalInner');
+const scorePage = document.getElementById('scorePage');
+const playerName = document.getElementById('name');
+const submit = document.getElementById('submit');
 
 let flippedCard = false;
 
@@ -41,6 +45,9 @@ function checkMatch () {
         disableCards();
         if (cardCounter ==(cards.length/2)) {
             clearInterval(interval);
+            modal.style.display = "flex";
+            firstModal.style.display ="none";
+            scorePage.style.display = "flex";
         }
     } else
 
@@ -77,6 +84,13 @@ function shuffle () {
     });
 }
 
+function saveScore() {
+    var scoreInfo = {
+    name: playerName.value.trim(),
+    points: countdown,}
+    localStorage.setItem("scoreInfo",JSON.stringify(scoreInfo))
+}
+
 cards.forEach(card => card.addEventListener('click', flipCard));
 
 startGame.addEventListener('click', function() {
@@ -104,5 +118,16 @@ startGame.addEventListener('click', function() {
     function showCountdownToPage() {
     timer.textContent = "Time Remaining " + countdown;
     }
+});
+
+submit.addEventListener("click",function() {
+    cards.forEach(card => card.addEventListener('click', flipCard));
+    cards.forEach(card => card.classList.remove('flip'));
+    saveScore();
+    shuffle();
+    modal.style.display = "flex";
+    firstModal.style.display ="block";
+    scorePage.style.display = "none";
+    countdown= 60
 });
 

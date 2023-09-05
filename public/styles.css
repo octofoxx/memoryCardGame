@@ -102,6 +102,19 @@ a {
     text-align: center;
 }
 
+#scorePage {
+    display: none;
+    background-color: #000;
+    color: #fff;
+    height: 45vh;
+    width: 45vw;
+    padding: 10px;
+    border-radius: 12px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 button {
     border: none;
     background-color: #48209A;
