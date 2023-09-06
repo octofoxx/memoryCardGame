@@ -124,6 +124,9 @@ startGame.addEventListener('click', function() {
         if (countdown <= 0) {
             clearInterval(interval);
             timer.textContent = "Time's Up!";
+            modal.style.display = "flex";
+            firstModal.style.display ="none";
+            scorePage.style.display = "flex";
         }
     
     }, 1000);
