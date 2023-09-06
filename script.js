@@ -109,23 +109,25 @@ startGame.addEventListener('click', function() {
     showCountdownToPage();
     shuffle();
 
+    function showCountdownToPage() {
+        timer.textContent = "Time Remaining " + countdown;
+    }
+
     interval = setInterval(function() {
         if (!gameStarted) {
             return;
         }
         countdown --;
+
+        showCountdownToPage();
     
         if (countdown <= 0) {
             clearInterval(interval);
             timer.textContent = "Time's Up!";
         }
     
-        showCountdownToPage();
     }, 1000);
     
-    function showCountdownToPage() {
-    timer.textContent = "Time Remaining " + countdown;
-    }
 });
 
 submit.addEventListener("click",function() {
