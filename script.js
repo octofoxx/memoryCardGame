@@ -17,6 +17,8 @@ let gameStarted = false;
 
 let cardCounter = 0;
 
+let scoreCounter =0;
+
 let countdown =60;
 
 let firstCard, secondCard, interval;
@@ -44,6 +46,7 @@ function checkMatch () {
     //this will increment the cardCounter by 1, and when it reaches half the cards length (half the length since each card is used twice) will stop the timer
     if(isMatch) {
         cardCounter+=1;
+        scoreCounter+=25;
         disableCards();
         if (cardCounter ==(cards.length/2)) {
             clearInterval(interval);
@@ -89,7 +92,7 @@ function shuffle () {
 function saveScore() {
     var scoreInfo = {
     name: playerName.value.trim(),
-    points: (countdown *12),}
+    points: (countdown *scoreCounter),}
     localStorage.setItem("scoreInfo",JSON.stringify(scoreInfo));
 }
 
@@ -146,5 +149,6 @@ submit.addEventListener("click",function() {
     timer.style.display = 'none';
     countdown= 60;
     cardCounter = 0;
+    scoreCounter = 0;
 });
 
