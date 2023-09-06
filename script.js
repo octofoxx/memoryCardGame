@@ -103,7 +103,7 @@ cards.forEach(card => card.addEventListener('click', flipCard));
 startGame.addEventListener('click', function() {
     modal.style.display = 'none';
     timer.style.display = 'flex';
-    scores.style.display = 'flex';
+    scores.style.display = 'block';
 
     gameStarted = true;
     showCountdownToPage();
