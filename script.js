@@ -89,7 +89,7 @@ function shuffle () {
 function saveScore() {
     var scoreInfo = {
     name: playerName.value.trim(),
-    points: (countdown *10.5),}
+    points: (countdown *12),}
     localStorage.setItem("scoreInfo",JSON.stringify(scoreInfo));
 }
 
