@@ -6,8 +6,8 @@ const firstModal = document.getElementById('modalInner');
 const scorePage = document.getElementById('scorePage');
 const scores = document.getElementById('scores');
 const scoreList = document.getElementById('scoreList');
-const playerName = document.getElementById('name');
-const submit = document.getElementById('submit');
+const scoreInfo = document.getElementById('scoreInfo');
+const save = document.getElementById('save');
 
 let flippedCard = false;
 
@@ -22,6 +22,8 @@ let scoreCounter =0;
 let countdown =60;
 
 let firstCard, secondCard, interval;
+
+var displayedScore =JSON.parse(localStorage.getItem("scoreInfo"));
 
 //function to flip the cards, used with the eventListener to see which is clicked. After two cards are clicked, will run the checkMatch to determine if they are the same or not.
 function flipCard () {
@@ -53,6 +55,7 @@ function checkMatch () {
             modal.style.display = "flex";
             firstModal.style.display ="none";
             scorePage.style.display = "flex";
+            scoreInfo.innerHTML ="You scored..."+ displayedScore.points+"! Save and try to beat!";
         }
     } else
 
@@ -91,14 +94,12 @@ function shuffle () {
 
 function saveScore() {
     var scoreInfo = {
-    name: playerName.value.trim(),
-    points: (countdown *scoreCounter),}
+    points: scoreCounter +(countdown *scoreCounter),}
     localStorage.setItem("scoreInfo",JSON.stringify(scoreInfo));
 }
 
 function showScore(){
-    var displayedScore =JSON.parse(localStorage.getItem("scoreInfo"));
-    scoreList.innerHTML ="name " + displayedScore.name + " score: " +displayedScore.points;
+    scoreList.innerHTML =displayedScore.points+ " points";
     }
 
 cards.forEach(card => card.addEventListener('click', flipCard));
@@ -106,7 +107,7 @@ cards.forEach(card => card.addEventListener('click', flipCard));
 startGame.addEventListener('click', function() {
     modal.style.display = 'none';
     timer.style.display = 'flex';
-    scores.style.display = 'block';
+    scores.style.display = 'flex';
 
     gameStarted = true;
     showCountdownToPage();
@@ -130,20 +131,21 @@ startGame.addEventListener('click', function() {
             modal.style.display = "flex";
             firstModal.style.display ="none";
             scorePage.style.display = "flex";
+            scoreInfo.innerHTML ="You scored..."+ displayedScore.points+"! Save and try to beat!";
         }
     
     }, 1000);
     
 });
 
-submit.addEventListener("click",function() {
+save.addEventListener("click",function() {
     cards.forEach(card => card.addEventListener('click', flipCard));
     cards.forEach(card => card.classList.remove('flip'));
     saveScore();
     showScore();
     shuffle();
     modal.style.display = "flex";
-    firstModal.style.display ="block";
+    firstModal.style.display ="flex";
     scorePage.style.display = "none";
     scores.style.display = 'none';
     timer.style.display = 'none';
