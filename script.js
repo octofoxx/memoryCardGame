@@ -23,7 +23,7 @@ let countdown =60;
 
 let firstCard, secondCard, interval;
 
-var displayedScore =JSON.parse(localStorage.getItem("scoreInfo"));
+var displayedScore =0;
 
 //function to flip the cards, used with the eventListener to see which is clicked. After two cards are clicked, will run the checkMatch to determine if they are the same or not.
 function flipCard () {
@@ -52,6 +52,8 @@ function checkMatch () {
         disableCards();
         if (cardCounter ==(cards.length/2)) {
             clearInterval(interval);
+            saveScore();
+            showScore();
             modal.style.display = "flex";
             firstModal.style.display ="none";
             scorePage.style.display = "flex";
@@ -94,11 +96,12 @@ function shuffle () {
 
 function saveScore() {
     var scoreInfo = {
-    points: scoreCounter +(countdown *scoreCounter),}
+    points: (scoreCounter +(countdown *scoreCounter)),}
     localStorage.setItem("scoreInfo",JSON.stringify(scoreInfo));
 }
 
 function showScore(){
+    displayedScore =JSON.parse(localStorage.getItem("scoreInfo"));
     scoreList.innerHTML =displayedScore.points+ " points";
     }
 
@@ -152,5 +155,6 @@ save.addEventListener("click",function() {
     countdown= 60;
     cardCounter = 0;
     scoreCounter = 0;
+    displayedScore =0;
 });
 
