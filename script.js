@@ -55,7 +55,7 @@ function checkMatch () {
             modal.style.display = "flex";
             firstModal.style.display ="none";
             scorePage.style.display = "flex";
-            scoreInfo.innerHTML ="You scored..."+ displayedScore.points+"! Save and try to beat!";
+            scoreInfo.textContent ="You scored..."+ displayedScore.points+"! Save and try to beat!";
         }
     } else
 
@@ -131,7 +131,7 @@ startGame.addEventListener('click', function() {
             modal.style.display = "flex";
             firstModal.style.display ="none";
             scorePage.style.display = "flex";
-            scoreInfo.innerHTML ="You scored..."+ displayedScore.points+"! Save and try to beat!";
+            scoreInfo.textContent ="You scored..."+ displayedScore.points+"! Save and try to beat!";
         }
     
     }, 1000);
