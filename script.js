@@ -130,6 +130,8 @@ startGame.addEventListener('click', function() {
     
         if (countdown <= 0) {
             clearInterval(interval);
+            saveScore();
+            showScore();
             timer.textContent = "Time's Up!";
             modal.style.display = "flex";
             firstModal.style.display ="none";
